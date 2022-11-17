@@ -1,9 +1,18 @@
 const router = require('express').Router();
 const db = require('../db/db.json');
+const { v4: uuidv4 } = require('uuid');
 
 router.get('/notes', (req, res) => {
-    res.send(db)
-    console.log(db)
+    let results = db;
+    res.json(results);
+
+    router.post('/notes', (req, res) => {
+        req.body.id = uuidv4;
+        const newNote = makeNewNote(req.body, notes);
+        res.json(newNote);
+    });
+
+    
 })
 
 module.exports = router;
