@@ -1,10 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-function refreshDb(deleteNote, notesArray) {
-    const deleteNote = deleteNote;
-    for (let i = 0; i , notesArray.length; i++) {
-        notesArray.splice(i, 1);
+function refreshDb(notesArray) {
         fs.writeFileSync(path.join(__dirname, "db/db.json"),
         JSON.stringify({notes: notesArray}, null, 2), err => {
             if (err) {
@@ -12,11 +9,11 @@ function refreshDb(deleteNote, notesArray) {
             }
         })
         
-    }
 }
 
+
 function makeNewNote(newNote, notesArray) {
-    const newNote = newNote;
+    notesArray.push(newNote);
     fs.writeFileSync(path.join(__dirname, "db/db.json"),
     JSON.stringify({notes: notesArray}, null, 2));
     return newNote;
