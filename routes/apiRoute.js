@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const db = require('../db/db.json');
 const { v4: uuidv4 } = require('uuid');
+const {refreshDb, makeNewNote} = require('../notes')
 
 router.get('/notes', (req, res) => {
     let results = db;
