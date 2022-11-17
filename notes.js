@@ -15,7 +15,11 @@ function refreshDb(notesArray) {
 function makeNewNote(newNote, notesArray) {
     notesArray.push(newNote);
     fs.writeFileSync(path.join(__dirname, "db/db.json"),
-    JSON.stringify({notesArray}, null, 2));
+    JSON.stringify({notesArray}, null, 2), err => {
+        if (err) {
+            throw err;
+        }
+    });
     return newNote;
 }
 
