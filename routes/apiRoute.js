@@ -12,8 +12,7 @@ router.get('/notes', (req, res) => {
         }
         const json = JSON.parse(data)
         res.json(json)
-    })
-    
+    })   
 });
 
 router.post('/notes', (req, res) => {
