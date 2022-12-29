@@ -5,25 +5,26 @@ const {refreshDb, makeNewNote} = require('../notes')
 const fs = require('fs');
 
 router.get('/notes', (req, res) => {
-    fs.readFile('../db/db.json', 'utf-8', function(err, data) {
-        if (err) {
-            res.status(500).json(err)
-            return
-        }
-        const json = JSON.parse(data)
-        res.json(json)
-    })   
+    res.json(db);
+    // fs.readFile('../db/db.json', 'utf-8', function(err, data) {
+    //     if (err) {
+    //         res.status(500).json(err)
+    //         return
+    //     }
+    //     const json = JSON.parse(data)
+    //     res.json(json)
+    // })   
 });
 
 router.post('/notes', (req, res) => {
     req.body.id = uuidv4();
-    const newNote = makeNewNote(req.body, notes);
+    const newNote = makeNewNote(req.body, db);
     res.json(newNote);
 });    
 
 router.delete('/notes/:id', (req, res) => {
     const id = req.params.id;
-    let notes
+    let note
 
     db.map((element, index) => {
         if (element.id == id) {
