@@ -5,15 +5,7 @@ const {refreshDb, makeNewNote} = require('../notes')
 const fs = require('fs');
 
 router.get('/notes', (req, res) => {
-    res.json(db);
-    // fs.readFile('../db/db.json', 'utf-8', function(err, data) {
-    //     if (err) {
-    //         res.status(500).json(err)
-    //         return
-    //     }
-    //     const json = JSON.parse(data)
-    //     res.json(json)
-    // })   
+    res.json(db); 
 });
 
 router.post('/notes', (req, res) => {

@@ -7,10 +7,8 @@ function refreshDb(notesArray) {
             if (err) {
                 throw err;
             }
-        })
-        
+        })        
 }
-
 
 function makeNewNote(newNote, notesArray) {
     notesArray.push(newNote);
